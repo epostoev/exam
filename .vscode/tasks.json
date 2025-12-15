@@ -1,0 +1,38 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "C: gcc build",
+            "type": "shell",
+            "command": "gcc",
+            "args": [
+                "-g",
+                "-Wall",
+                "${file}",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": ["$gcc"],
+            "detail": "Компиляция с отладочной информацией"
+        },
+        {
+            "label": "C: gcc build (all)",
+            "type": "shell",
+            "command": "gcc",
+            "args": [
+                "-g",
+                "-Wall",
+                "*.c",
+                "-o",
+                "program"
+            ],
+            "group": "build",
+            "problemMatcher": ["$gcc"],
+            "detail": "Компиляция всех .c файлов"
+        }
+    ]
+}
