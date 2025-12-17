@@ -3,6 +3,10 @@
 
 void print_array(char *arr, int len) {
   for (int i = 0; i < len; i++) {
+    printf("%3d ", i);
+  }
+  printf("\n");
+  for (int i = 0; i < len; i++) {
     printf("%3d ", arr[i]);
   }
   printf("\n");
@@ -22,37 +26,35 @@ int main(void) {
 
   // Убираем  пробелы вначале строки
   while (i < len && arr[i] == ' ') {
-    printf("i:%d j:%d \n", i, j);
+    printf("i:%d j:%d len:%d\n", i, j, len);
     printf("arr[i]: %d \n", arr[i]);
-    getchar();
+    // getchar();
     i++;
   }
   while (i < len) {
     if (arr[i] != ' ') {
-      printf("i:%d j:%d \n", i, j);
+      printf("i:%d j:%d len:%d\n", i, j, len);
       printf("arr[i]: %d \n", arr[i]);
-      getchar();
+    //   getchar();
       arr[j] = arr[i];
       i++;
       j++;
-      len--;
     } else {
-      printf("i:%d j:%d \n", i, j);
+      printf("i:%d j:%d len:%d\n", i, j, len);
       printf("arr[i]: %d \n", arr[i]);
-      getchar();
+    //   getchar();
       arr[j] = arr[i];
       i++;
       j++;
-      len--;
       if (arr[i] == ' ') {
         i++;
       }
     }
-    if (arr[len - 1] == ' ') {
-        arr[len - 1] = '\0';
-        len--;
-    } 
   }
-  print_array(arr, len);
+  if (arr[j - 1] == ' ') {
+	arr[j - 1] = '\0';
+	j--;
+  }
+  print_array(arr, j);
   return 0;
 }
