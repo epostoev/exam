@@ -29,7 +29,7 @@ void print_arra(char *arr, int len) {
 }
 
 int main() {
-	char arr[] = " Hello  World ";
+	char arr[] = "   Hello     World ";
 	int len = strlen(arr);
 	print_arra(arr, len);
 	
@@ -42,17 +42,24 @@ int main() {
 		getchar();
 		// если текущий элемент равен следующему
 		// if (arr[i] == arr[i + 1] && arr[i] != 0) {
-		if (arr[i] == ' ' && arr[i + 1] == ' ' && arr[i] != 0) {
+		if ((len > 0) && (arr[0] == ' ') || (arr[i] == ' ' && arr[i + 1] == ' ')) {
 			// то все элементы справа сдвинуть на одну позицию
 			// влево все элементы
 			for (int j = i; j < len - 1; j++) {
 				arr[j] = arr[j + 1];
 			} 
-			arr[len - 1] = 0;
+			arr[len - 1] = '\0';
+			len--;
 			i--;
 		}
 	}
+		if (arr[len - 1] == ' ') {
+			arr[len - 1] = '\0';
+			len--;
+		}
 	print_arra(arr, len);
+	printf("\n");
+	printf("%s\n",arr);
 
 	return 0;
 }
