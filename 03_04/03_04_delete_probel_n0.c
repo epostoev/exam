@@ -17,7 +17,7 @@ void print_array(char *arr, int len) {
 }
 
 int main(void) {
-  char arr[] = "  Hello  World ";
+  char arr[] = "  Hello   World ";
   int len = strlen(arr);
   printf("Исходный: \n");
   print_array(arr, len);
