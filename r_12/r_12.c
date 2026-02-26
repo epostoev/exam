@@ -31,11 +31,7 @@ int main(void){
         }
         else if (arr_1[i] > 64 && arr_1[i] < 91) {
             arr_1[i] = ((arr_1[i] - 'A' + 13) % 26) + 'A';
-        }
-        // else if (arr_1[i] == ' ') {
-        //     arr_1[i] = ' ';
-        // } 
-    
+      }
         printf("%c", arr_1[i]); 
     }
 
