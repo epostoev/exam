@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// Вывести наибольшее число из вводимой цифры)
+
 int main(void) {
     int number_i = 0;
     int unit_of_number = 0;
