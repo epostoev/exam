@@ -39,46 +39,66 @@
 // }
 
 
+// #include <stdio.h>
+
+// void print_arr(char *arr, int cnt) {
+//     // for (int i = 0; i <= cnt; i++) {
+//     //     printf("%3d ", i);
+//     // }
+//     // printf("\n");
+//     // for (int i = 0; i <= cnt; i++) {
+//     //     printf("%3d ", arr[i]);
+//     // }
+//     printf("\n");
+//     for (int i = 0; i <= cnt; i++) {
+//         printf("%c", arr[i]);
+//     }
+//     printf("\n");
+// }
+
+// int main(void){
+//     char name_of_file[10] = "test.txt";
+//     int ch = 0;
+//     char arr[1000];
+//     int cnt = 0;
+//     FILE *file = fopen(name_of_file, "r");
+//     for(;(ch = fgetc(file)) != EOF;){
+//         arr[cnt] = ch;
+//         printf("%c", ch);
+//         cnt++;
+//     }
+//     printf("\n\n\n");
+//     print_arr(arr, cnt);
+
+//     for(int i = 0;arr[i] != '\0'; i++){
+//         if (((arr[i] > 64) && (arr[i] < 78)) || ((arr[i] > 96) && (arr[i] < 110))) {
+//             arr[i] = (arr[i] + 13);
+//         }
+//         else if (((arr[i] > 77) && (arr[i] < 91)) || ((arr[i] > 109) && (arr[i] < 123))) {
+//             arr[i] = (arr[i] - 13);
+//         }
+//     }
+//     printf("\n\n\n");
+//     print_arr(arr, cnt);
+//     return 0;
+// }
+
 #include <stdio.h>
 
-void print_arr(char *arr, int cnt) {
-    // for (int i = 0; i <= cnt; i++) {
-    //     printf("%3d ", i);
-    // }
-    // printf("\n");
-    // for (int i = 0; i <= cnt; i++) {
-    //     printf("%3d ", arr[i]);
-    // }
-    printf("\n");
-    for (int i = 0; i <= cnt; i++) {
-        printf("%c", arr[i]);
-    }
-    printf("\n");
-}
-
-int main(void){
-    char name_of_file[10] = "test.txt";
+int main(void) {
     int ch = 0;
-    char arr[1000];
+    int arr[1000];
     int cnt = 0;
-    FILE *file = fopen(name_of_file, "r");
-    for(;(ch = fgetc(file)) != EOF;){
-        arr[cnt] = ch;
+    FILE *file = fopen("test.txt", "r");
+    for(;((ch = fgetc(file)) != EOF);) {
         printf("%c", ch);
+        arr[cnt] = ch;
         cnt++;
     }
-    printf("\n\n\n");
-    print_arr(arr, cnt);
-
-    for(int i = 0;arr[i] != '\0'; i++){
-        if (((arr[i] > 64) && (arr[i] < 78)) || ((arr[i] > 96) && (arr[i] < 110))) {
-            arr[i] = (arr[i] + 13);
-        }
-        else if (((arr[i] > 77) && (arr[i] < 91)) || ((arr[i] > 109) && (arr[i] < 123))) {
-            arr[i] = (arr[i] - 13);
+    for (int i = 0; i < cnt; i++){
+        if (arr[i] > 64 && arr[i] < 78 )  || (arr[i] > 96 && arr[i] < 110) {
+            
         }
     }
-    printf("\n\n\n");
-    print_arr(arr, cnt);
     return 0;
 }
