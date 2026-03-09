@@ -83,22 +83,107 @@
 //     return 0;
 // }
 
+// #include <stdio.h>
+
+// int main(void) {
+//     int ch = 0;
+//     int arr[1000];
+//     int cnt = 0;
+//     FILE *file = fopen("test.txt", "r");
+//     for(;((ch = fgetc(file)) != EOF);) {
+//         printf("%c", ch);
+//         arr[cnt] = ch;
+//         cnt++;
+//     }
+//     for (int i = 0; i < cnt; i++){
+//         if (arr[i] > 64 && arr[i] < 78 )  || (arr[i] > 96 && arr[i] < 110) {
+
+//         }
+//     }
+//     return 0;
+// }
+
 #include <stdio.h>
 
+// Проверка, является ли символ латинской буквой
+int is_latin_letter(char c) {
+    return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z');
+}
+
+// Шифрование символа шифром Цезаря
+char caesar_encrypt(char c, int k) {
+    if (c >= 'a' && c <= 'z') {
+        // Строчные буквы: a-z
+        return ((c - 'a' + k) % 26) + 'a';
+    }
+    else if (c >= 'A' && c <= 'Z') {
+        // Заглавные буквы: A-Z
+        return ((c - 'A' + k) % 26) + 'A';
+    }
+    else {
+        // Не буква - возвращаем как есть
+        return c;
+    }
+}
+
 int main(void) {
-    int ch = 0;
-    int arr[1000];
-    int cnt = 0;
-    FILE *file = fopen("test.txt", "r");
-    for(;((ch = fgetc(file)) != EOF);) {
-        printf("%c", ch);
-        arr[cnt] = ch;
-        cnt++;
+    char input_path[256];
+    char output_path[256];
+    int k;
+    
+    // Читаем путь к входному файлу
+    printf("Введите путь к входному файлу: ");
+    if (scanf("%s", input_path) != 1) {
+        printf("n/a\n");
+        return 0;
     }
-    for (int i = 0; i < cnt; i++){
-        if (arr[i] > 64 && arr[i] < 78 )  || (arr[i] > 96 && arr[i] < 110) {
-            
-        }
+    
+    // Читаем путь к выходному файлу
+    printf("Введите путь к выходному файлу: ");
+    if (scanf("%s", output_path) != 1) {
+        printf("n/a\n");
+        return 0;
     }
+    
+    // Читаем сдвиг
+    printf("Введите сдвиг k: ");
+    if (scanf("%d", &k) != 1) {
+        printf("n/a\n");
+        return 0;
+    }
+    
+    // Нормализуем k в диапазон 0-25
+    k = k % 26;
+    if (k < 0) {
+        k += 26;
+    }
+    
+    // Открываем входной файл
+    FILE *input = fopen(input_path, "r");
+    if (input == NULL) {
+        printf("n/a\n");
+        return 0;
+    }
+    
+    // Открываем выходной файл
+    FILE *output = fopen(output_path, "w");
+    if (output == NULL) {
+        printf("n/a\n");
+        fclose(input);
+        return 0;
+    }
+    
+    // Шифруем посимвольно
+    char c;
+    while ((c = fgetc(input)) != EOF) {
+        char encrypted = caesar_encrypt(c, k);
+        fputc(encrypted, output);
+    }
+    
+    fclose(input);
+    fclose(output);
+    
+    printf("Файл зашифрован успешно!\n");
+    
     return 0;
 }
